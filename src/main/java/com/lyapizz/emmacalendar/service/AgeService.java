@@ -1,5 +1,6 @@
 package com.lyapizz.emmacalendar.service;
 
+import com.lyapizz.emmacalendar.model.AgeResponse;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -12,9 +13,9 @@ public class AgeService {
 
     private static final LocalDate EMMA_BIRTHDAY = LocalDate.of(2021, 10, 25);
 
-    public String getAge() {
+    public AgeResponse getAge() {
         LocalDate currentDate = LocalDate.now();
         Period agePeriod = Period.between(EMMA_BIRTHDAY, currentDate);
-        return periodConverter.convert(agePeriod);
+        return new AgeResponse(periodConverter.convert(agePeriod));
     }
 }

@@ -1,5 +1,6 @@
 package com.lyapizz.emmacalendar.controller;
 
+import com.lyapizz.emmacalendar.model.AgeResponse;
 import com.lyapizz.emmacalendar.service.AgeService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ public class AgeRestController {
     AgeService ageService;
 
     @GetMapping
-    String getAge() {
+    AgeResponse getAge() {
         return ageService.getAge();
     }
 
