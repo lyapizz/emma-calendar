@@ -4,6 +4,7 @@ import com.lyapizz.emmacalendar.model.TodayResponse;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Map;
 
 @Service
@@ -24,7 +25,7 @@ public class TodayService {
             Map.entry(12, "декабря"));
 
     public TodayResponse getCurrentDate() {
-        LocalDate currentDate = LocalDate.now();
+        LocalDate currentDate = LocalDate.now(ZoneId.of("Europe/Moscow"));
         return new TodayResponse(createTodayString(currentDate));
     }
 
