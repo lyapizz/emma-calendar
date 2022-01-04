@@ -1,10 +1,9 @@
 package com.lyapizz.emmacalendar.service;
 
-import com.lyapizz.emmacalendar.model.TodayResponse;
+import com.lyapizz.emmacalendar.util.DateUtils;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Map;
 
 @Service
@@ -24,9 +23,9 @@ public class TodayService {
             Map.entry(11, "ноября"),
             Map.entry(12, "декабря"));
 
-    public TodayResponse getCurrentDate() {
-        LocalDate currentDate = LocalDate.now(ZoneId.of("Europe/Moscow"));
-        return new TodayResponse(createTodayString(currentDate));
+    public String getCurrentDate() {
+        LocalDate currentDate = DateUtils.currentDate();
+        return createTodayString(currentDate);
     }
 
     private String createTodayString(LocalDate currentDate) {
