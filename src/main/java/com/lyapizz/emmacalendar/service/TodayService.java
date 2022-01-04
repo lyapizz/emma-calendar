@@ -3,6 +3,7 @@ package com.lyapizz.emmacalendar.service;
 import com.lyapizz.emmacalendar.util.DateUtils;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Map;
 
@@ -23,13 +24,26 @@ public class TodayService {
             Map.entry(11, "ноября"),
             Map.entry(12, "декабря"));
 
+    private static final Map<DayOfWeek, String> russianDayOfWeekMap = Map.ofEntries(
+            Map.entry(DayOfWeek.MONDAY, "понедельник"),
+            Map.entry(DayOfWeek.TUESDAY, "вторник"),
+            Map.entry(DayOfWeek.WEDNESDAY, "среда"),
+            Map.entry(DayOfWeek.THURSDAY, "четверг"),
+            Map.entry(DayOfWeek.FRIDAY, "пятница"),
+            Map.entry(DayOfWeek.SATURDAY, "суббота"),
+            Map.entry(DayOfWeek.SUNDAY, "воскресенье"));
+
     public String getCurrentDate() {
         LocalDate currentDate = DateUtils.currentDate();
         return createTodayString(currentDate);
     }
 
     private String createTodayString(LocalDate currentDate) {
-        return currentDate.getDayOfMonth() + " " + getRussianMonth(currentDate.getMonthValue());
+        return currentDate.getDayOfMonth() + " " + getRussianMonth(currentDate.getMonthValue()) + ", " + getRussianDayOfWeek(currentDate.getDayOfWeek());
+    }
+
+    private String getRussianDayOfWeek(DayOfWeek dayOfWeek) {
+        return russianDayOfWeekMap.get(dayOfWeek);
     }
 
     private String getRussianMonth(int monthValue) {
