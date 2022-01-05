@@ -39,7 +39,7 @@ public class TodayService {
     }
 
     private String createTodayString(LocalDate currentDate) {
-        return currentDate.getDayOfMonth() + " " + getRussianMonth(currentDate.getMonthValue()) + ", " + getRussianDayOfWeek(currentDate.getDayOfWeek());
+        return currentDate.getDayOfMonth() + "-е " + getRussianMonth(currentDate.getMonthValue()) + ", " + getRussianDayOfWeek(currentDate.getDayOfWeek());
     }
 
     private String getRussianDayOfWeek(DayOfWeek dayOfWeek) {
