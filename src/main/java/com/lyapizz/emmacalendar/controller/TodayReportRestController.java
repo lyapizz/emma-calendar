@@ -15,7 +15,7 @@ public class TodayReportRestController {
     TodayReportService todayReportService;
 
     @GetMapping
-    TodayReportResponse getTodayReport() {
+    public TodayReportResponse getTodayReport() {
         return todayReportService.createTodayReport();
     }
 
